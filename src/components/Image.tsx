@@ -13,7 +13,7 @@ export const Image = ({ alt, src, className = '' }: ImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const thumbnailLoader = ({ src }: ImageLoaderProps) =>
-    `http://localhost:3000/api/images/${src}?thumbnail=true`;
+    `${process.env.NEXT_PUBLIC_API}/api/images/${src}?thumbnail=true`;
 
   const loader = ({
     width,
@@ -29,7 +29,7 @@ export const Image = ({ alt, src, className = '' }: ImageProps) => {
 
     const queryString = props.join('&');
 
-    return `http://localhost:3000/api/images/${src}?${queryString}`;
+    return `${process.env.NEXT_PUBLIC_API}/api/images/${src}?${queryString}`;
   };
 
   return (

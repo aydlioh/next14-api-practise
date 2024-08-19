@@ -1,8 +1,10 @@
 import { Image } from '@/components/Image';
 
+export const dynamic = 'force-dynamic';
+
 const getPictures = async () => {
   return (
-    await fetch('http://localhost:3000/api/images', { next: { revalidate: 1 } })
+    await fetch(`${process.env.NEXT_PUBLIC_API}/api/images`, { next: { revalidate: 1 } })
   ).json();
 };
 

@@ -17,7 +17,7 @@ const UploadImagePage = () => {
       const formData = new FormData();
       formData.append('image', image);
 
-      await fetch('http://localhost:3000/api/images', {
+      await fetch(`${process.env.NEXT_PUBLIC_API}/api/images`, {
         method: 'POST',
         body: formData,
       }).then(() => {
