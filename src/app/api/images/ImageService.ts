@@ -38,6 +38,23 @@ class ImageService {
     await fs.writeFile(thumbnailPath, thumbnailBuffer);
   }
 
+  async getAll() {
+    try {
+      const files = await fs.readdir(this.uploadDir);
+
+      return files.filter((file) => {
+        const ext = path.extname(file).toLowerCase();
+        const basename = path.basename(file).toLowerCase();
+        return (
+          ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext) &&
+          !basename.includes('-thumbnail.')
+        );
+      });
+    } catch (error) {
+      return [];
+    }
+  }
+
   async getThumbnail(src: string) {
     const fileExtension = path.extname(src);
     const basename = path.basename(src, fileExtension);

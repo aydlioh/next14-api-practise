@@ -54,7 +54,7 @@ export const Image = ({ alt, src, className = '' }: ImageProps) => {
         className={`object-cover h-full w-full transition-opacity duration-150 ease-in-out ${
           isLoading ? 'opacity-0' : 'opacity-100'
         }`}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
       />
     </div>
   );

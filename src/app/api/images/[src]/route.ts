@@ -22,9 +22,6 @@ export async function GET(
   if (thumbnail) {
     try {
       const thumbnailImage = await imageService.getThumbnail(src);
-      logger.info(
-        `Thumbnail fetched successfully GET:${requestUrl.pathname}${requestUrl.search}`
-      );
       return new NextResponse(thumbnailImage, successConfig);
     } catch (error) {
       logger.error(`Error fetching thumbnail: ${error}`);
@@ -34,9 +31,9 @@ export async function GET(
 
   try {
     const resizedImage = await imageService.getImage(src, quality, width);
-    logger.info(`Image fetched successfully GET:/api/images/${src}`);
     return new NextResponse(resizedImage, successConfig);
   } catch (error) {
+    logger.error(`Error fetching image: ${error}`);
     return Response.json({ message: 'Not Found' }, { status: 404 });
   }
 }

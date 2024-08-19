@@ -15,3 +15,9 @@ export async function POST(request: NextRequest) {
   logger.info(`Image save successfully POST:${request.nextUrl.pathname}`);
   return Response.json({ message: 'Success' }, { status: 201 });
 }
+
+export async function GET() {
+  const images = await imageService.getAll();
+  logger.info(`Images fetched successfully GET:/api/images`);
+  return Response.json(images, { status: 200 });
+}
