@@ -66,13 +66,16 @@ class ImageService {
 
   async getImage(src: string, quality: number, width: number) {
     const imagePath = path.join(this.uploadDir, src);
-    const originalImage = await fs.readFile(imagePath);
+    return await fs.readFile(imagePath);
+
+    /* Достаточно долго работает
     return await sharp(originalImage)
       .png({
         quality,
       })
       .resize(width)
       .toBuffer();
+    */
   }
 }
 
