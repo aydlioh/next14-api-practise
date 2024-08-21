@@ -3,11 +3,9 @@ import fs from 'fs/promises';
 import sharp from 'sharp';
 
 class ImageService {
-  private uploadDir: string;
-
-  constructor() {
-    this.uploadDir = path.join(process.cwd(), 'uploads');
-  }
+  constructor(
+    private uploadDir: string = path.join(process.cwd(), 'uploads')
+  ) {}
 
   async save(image: any) {
     const filename = image.name;

@@ -52,7 +52,7 @@ export const FilePicker = ({
     () => {
       errorTimeoutRef.current && clearTimeout(errorTimeoutRef.current);
     };
-  });
+  }, []);
 
   return (
     <div
